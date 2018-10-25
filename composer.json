@@ -1,0 +1,27 @@
+{
+    "name": "hisman/laravel-make-class",
+    "description": "Artisan command for generating a new custom class in Laravel.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hisman",
+            "email": "hisman@hisman.org",
+            "homepage": "https://hisman.co"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Hisman\\MakeClass\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hisman\\MakeClass\\Test\\": "tests/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.4",
+        "orchestra/testbench": "^3.7"
+    }
+}
