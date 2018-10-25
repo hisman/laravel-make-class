@@ -1,1 +1,1 @@
-# laravel-make-class
+# Laravel make:class
