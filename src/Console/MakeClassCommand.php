@@ -29,20 +29,6 @@ class MakeClassCommand extends GeneratorCommand
     protected $type = 'Class';
 
     /**
-     * Execute the console command.
-     *
-     * @return void
-     */
-    public function handle()
-    {
-        if (parent::handle() === false && ! $this->option('force')) {
-            return;
-        }
-
-        ///
-    }
-
-    /**
      * Get the stub file for the generator.
      *
      * @return string
