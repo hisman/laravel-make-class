@@ -16,6 +16,20 @@ class MakeClassTest extends BaseTestCase
     protected $files;
 
     /**
+     * Class name.
+     *
+     * @var string
+     */
+    protected $classname;
+
+    /**
+     * Class file path.
+     *
+     * @var string
+     */
+    protected $filepath;
+
+    /**
      * Load package service provider
      * @param  \Illuminate\Foundation\Application $app
      * @return \Hisman\MakeClass\MakeClassServiceProvider
@@ -33,6 +47,8 @@ class MakeClassTest extends BaseTestCase
         parent::setUp();
 
         $this->files = new Filesystem();
+        $this->classname = 'TestClass';
+        $this->filepath = $this->app['path'].'/Classes/'.$this->classname.'.php';
     }
 
     /**
@@ -42,12 +58,50 @@ class MakeClassTest extends BaseTestCase
      */
     public function testCreateClass()
     {
-        $this->artisan('make:class', ['name' => 'TestClass', '--force' => true])
+        $this->artisan('make:class', ['name' => $this->classname, '--force' => true])
              ->expectsOutput('Class created successfully.');
         
-        $filepath = $this->app['path'].'/Classes/TestClass.php';
+        $class_content = $this->files->get($this->filepath);
+        
+        $this->assertTrue($this->files->exists($this->filepath));
+        $this->assertContains('class '.$this->classname, $class_content);
+        $this->assertNotContains('__construct', $class_content);
+    }
+
+    /**
+     * Test for creating a new class with constructor from artisan command.
+     *
+     * @test
+     */
+    public function testCreateClassWithConstructor()
+    {
+        $this->artisan('make:class', ['name' => $this->classname, '--force' => true, '--constructor' => true])
+             ->expectsOutput('Class created successfully.');
+        
+        $class_content = $this->files->get($this->filepath);
+        
+        $this->assertTrue($this->files->exists($this->filepath));
+        $this->assertContains('class '.$this->classname, $class_content);
+        $this->assertContains('__construct', $class_content);
+    }
+
+    /**
+     * Test for creating a new class in subfolder from artisan command.
+     *
+     * @test
+     */
+    public function testCreateClassInSubfolder()
+    {
+        $subfolder = 'Subfolder';
+        $filepath = $this->app['path'].'/Classes/'.$subfolder.'/'.$this->classname.'.php';
+
+        $this->artisan('make:class', ['name' => $subfolder.'\\'.$this->classname, '--force' => true])
+             ->expectsOutput('Class created successfully.');
+        
+        $class_content = $this->files->get($filepath);
         
         $this->assertTrue($this->files->exists($filepath));
-        $this->assertContains('class TestClass', $this->files->get($filepath));
+        $this->assertContains('class '.$this->classname, $class_content);
+        $this->assertContains('namespace App\\Classes\\'.$subfolder, $class_content);
     }
 }

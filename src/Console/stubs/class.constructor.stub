@@ -1,0 +1,16 @@
+<?php
+
+namespace DummyNamespace;
+
+class DummyClass
+{
+    /**
+     * Class constructor.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+}

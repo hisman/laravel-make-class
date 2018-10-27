@@ -49,7 +49,13 @@ class MakeClassCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/class.stub';
+        $stub = '/stubs/class.stub';
+
+        if ($this->option('constructor')) {
+            $stub = '/stubs/class.constructor.stub';
+        }
+
+        return __DIR__.$stub;
     }
 
     /**
@@ -71,7 +77,8 @@ class MakeClassCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
-            ['force', null, InputOption::VALUE_NONE, 'Create the class even if the model already exists'],
+            ['force', 'f', InputOption::VALUE_NONE, 'Create the class even if the class already exists'],
+            ['constructor', 'c', InputOption::VALUE_NONE, 'Create a new class with constructor'],
         ];
     }
 }
