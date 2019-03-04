@@ -5,8 +5,8 @@
     "authors": [
         {
             "name": "Hisman",
-            "email": "hisman@hisman.org",
-            "homepage": "https://hisman.co"
+            "homepage": "https://hisman.co",
+            "role": "Developer"
         }
     ],
     "autoload": {
@@ -24,5 +24,12 @@
         "phpunit/phpunit": "^7.4",
         "orchestra/testbench": "^3.7",
         "mockery/mockery": "^1.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hisman\\MakeClass\\MakeClassServiceProvider"
+            ]
+        }
     }
 }
