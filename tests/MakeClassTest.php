@@ -1,6 +1,6 @@
 <?php
 
-namespace Hisman\MakeClass\Test;
+namespace Hisman\MakeClass\Tests;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Hisman\MakeClass\MakeClassServiceProvider;

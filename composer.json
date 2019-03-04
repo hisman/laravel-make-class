@@ -16,7 +16,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Hisman\\MakeClass\\Test\\": "tests/"
+            "Hisman\\MakeClass\\Tests\\": "tests/"
         }
     },
     "require": {},
