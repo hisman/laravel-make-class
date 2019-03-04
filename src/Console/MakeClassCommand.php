@@ -52,7 +52,7 @@ class MakeClassCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.'\Classes';
+        return $rootNamespace;
     }
 
     /**

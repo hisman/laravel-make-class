@@ -48,7 +48,7 @@ class MakeClassTest extends BaseTestCase
 
         $this->files = new Filesystem();
         $this->classname = 'TestClass';
-        $this->filepath = $this->app['path'].'/Classes/'.$this->classname.'.php';
+        $this->filepath = $this->app['path'].'/'.$this->classname.'.php';
     }
 
     /**
@@ -93,7 +93,7 @@ class MakeClassTest extends BaseTestCase
     public function testCreateClassInSubfolder()
     {
         $subfolder = 'Subfolder';
-        $filepath = $this->app['path'].'/Classes/'.$subfolder.'/'.$this->classname.'.php';
+        $filepath = $this->app['path'].'/'.$subfolder.'/'.$this->classname.'.php';
 
         $this->artisan('make:class', ['name' => $subfolder.'\\'.$this->classname, '--force' => true])
              ->expectsOutput('Class created successfully.');
@@ -102,6 +102,6 @@ class MakeClassTest extends BaseTestCase
         
         $this->assertTrue($this->files->exists($filepath));
         $this->assertContains('class '.$this->classname, $class_content);
-        $this->assertContains('namespace App\\Classes\\'.$subfolder, $class_content);
+        $this->assertContains('namespace App\\'.$subfolder, $class_content);
     }
 }

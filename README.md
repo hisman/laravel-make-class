@@ -22,7 +22,7 @@ If you're using Laravel < 5.5, you'll need to add the service provider to `confi
 ```
 
 ## Usage
-To create a new class, call the `make:class` command from Artisan. Class will be created under the `app/Classes` folder.
+To create a new class, call the `make:class` command from Artisan. Class will be created under the `app` folder.
 ```
 php artisan make:class ClassName
 ```
