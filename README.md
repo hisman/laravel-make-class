@@ -6,7 +6,7 @@ Artisan command for generating a new custom class in Laravel.
 
 Install the package via composer:
 ```
-composer require hisman/laravel-make-class
+composer require --dev hisman/laravel-make-class
 ```
 
 If you're using Laravel < 5.5, you'll need to add the service provider to `config/app.php` file:
