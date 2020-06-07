@@ -3,7 +3,6 @@
 namespace Hisman\MakeClass\Console;
 
 use Illuminate\Console\GeneratorCommand;
-use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Input\InputOption;
 
 class MakeClassCommand extends GeneratorCommand
